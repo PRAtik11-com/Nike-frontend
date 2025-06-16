@@ -76,6 +76,7 @@ const ProductListPage = () => {
         });
 
         const url = `${import.meta.env.VITE_BaseUrl}/product/getallproducts?${params}`;
+        console.log("Request URL:", url);
         const res = await axios.get(url, { withCredentials: true });
         setProducts(res.data.posts || []);
       } catch (err) {
