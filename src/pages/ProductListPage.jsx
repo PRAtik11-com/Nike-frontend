@@ -75,9 +75,7 @@ const ProductListPage = () => {
           if (value) params.append(key.toLowerCase(), value);
         });
 
-        const url = `${
-          import.meta.env.VITE_BaseUrl
-        }/product/getallproducts?${params}`;
+        const url = `${import.meta.env.VITE_BaseUrl}/product/getallproducts?${params}`;
         const res = await axios.get(url, { withCredentials: true });
         setProducts(res.data.posts || []);
       } catch (err) {
