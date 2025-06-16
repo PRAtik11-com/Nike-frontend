@@ -36,8 +36,8 @@ const Navbar = () => {
       );
       console.log(res?.data);
 
-      dispatch(logoutSuccess());
-      localStorage.removeItem("token");
+      dispatch(logoutSuccess(null));
+      localStorage.removeItem("auth_token");
       navigate("/CheckEmail");
     } catch (error) {
       console.log(error?.response?.data?.message);

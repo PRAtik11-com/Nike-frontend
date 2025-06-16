@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const CartPage = () => {
   const [cart, setCart] = useState(null);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   const fetchCart = async () => {
     try {
@@ -69,6 +71,15 @@ const CartPage = () => {
     } catch (error) {
       console.error("Failed to update quantity", error);
       alert("Failed to update quantity");
+    }
+  };
+  const handleCheckout = (isMember = false) => {
+    if (isMember) {
+      // Member checkout - redirect to checkout page
+      navigate("/checkout");
+    } else {
+      // Guest checkout - redirect to login/signup
+      navigate("/CheckEmail", { state: { from: "/checkout" } });
     }
   };
 
@@ -139,10 +150,10 @@ const CartPage = () => {
           <span>Total</span>
           <span>₹ {total.toLocaleString("en-IN")}</span>
         </div>
-        <button className="w-full py-3 bg-black text-white rounded-full font-semibold">
+        <button className="w-full py-3 bg-black text-white rounded-full font-semibold"  onClick={() => handleCheckout(false)}>
           Guest Checkout
         </button>
-        <button className="w-full py-3 bg-black text-white rounded-full font-semibold">
+        <button className="w-full py-3 bg-black text-white rounded-full font-semibold"   onClick={() => handleCheckout(true)}>
           Member Checkout
         </button>
       </div>

@@ -15,22 +15,29 @@ const LoginPassword = () => {
   
 
   const handleLogin = async () => {
-    try {
-      dispatch(SignInStart());
-      const res = await axios.post(`${import.meta.env.VITE_BaseUrl}/user/login`, {
+  try {
+    dispatch(SignInStart());
+    const res = await axios.post(
+      `${import.meta.env.VITE_BaseUrl}/user/login`,
+      {
         email: state.email,
         password,
-      },{
-        withCredentials:true
-      });
-       console.log("Login response:", res.data);
-      
-      dispatch(SignInSuccess(res.data.token));
-      navigate("/");
-    } catch (err) {
-      dispatch(SignInError(err.response?.data?.message || "Login failed"));
-    }
-  };
+      },
+      {
+        withCredentials: true,
+      }
+    );
+
+    const token = res.data.token;
+    localStorage.setItem("auth_token", token);
+
+    dispatch(SignInSuccess(token));
+    navigate("/");
+  } catch (err) {
+    dispatch(SignInError(err.response?.data?.message || "Login failed"));
+  }
+};
+
 
   return (
     <div className="min-h-screen flex items-center justify-center">

@@ -7,6 +7,9 @@ import ProductListPage from "../pages/ProductListPage";
 import ProductDescription from "../pages/ProductDescription";
 import CartPage from "../pages/CartPage";
 import DashProfile from "../components/DashProfile";
+import CheckoutPage from "../pages/CheckoutPage";
+import OrderConfirmation from "../pages/OrderConfirmation";
+import OrdersPage from "../pages/OrdersPage";
 
 
 function Allroutes() {
@@ -20,7 +23,10 @@ function Allroutes() {
         <Route path="/ProductListpage" element={<ProductListPage />} />
         <Route path="/product/:productId" element={<ProductDescription />} />
         <Route path="/cartpage" element={<CartPage />} />
-        <Route path="DashProfile" element={<DashProfile />}/>
+        <Route path="/DashProfile" element={<DashProfile />}/>
+        <Route path="/checkout" element={<CheckoutPage/> } />
+        <Route path="/order/:id" element={<OrderConfirmation />} />
+        <Route path="/orders" element={<OrdersPage />} />
       </Routes>
    
   );
