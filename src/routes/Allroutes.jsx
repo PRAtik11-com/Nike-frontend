@@ -20,7 +20,7 @@ function Allroutes() {
         <Route path="/CheckEmail" element={<CheckEmail />} />
         <Route path="/login-password" element={<LoginPassword />} />
         <Route path="/signup-form" element={<SignupForm />} />
-        <Route path="/ProductListpage" element={<ProductListPage />} />
+        <Route path="/productListpage" element={<ProductListPage />} />
         <Route path="/product/:productId" element={<ProductDescription />} />
         <Route path="/cartpage" element={<CartPage />} />
         <Route path="/DashProfile" element={<DashProfile />}/>
