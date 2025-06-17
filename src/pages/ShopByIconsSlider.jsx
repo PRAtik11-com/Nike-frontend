@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const ShopByIconsSlider = () => {
-  // Static data for shop by icons
-  const shopByIconsData = [
+    const shopByIconsData = [
     {
       "title": "Vomero 18",
       "image": "https://static.nike.com/a/images/f_auto/dpr_1.3,cs_srgb/w_435,c_limit/0ce83fe0-a838-4a6d-88c0-b038b1f3adbd/nike-just-do-it.png",
@@ -46,40 +45,53 @@ const ShopByIconsSlider = () => {
   ];
 
   const [currentIconIndex, setCurrentIconIndex] = useState(0);
-  const itemsPerPage = 3;
+  const [itemsPerPage, setItemsPerPage] = useState(3);
 
-  // Auto-rotate sliders
+ 
+  useEffect(() => {
+    const updateItemsPerPage = () => {
+      if (window.innerWidth < 640) {
+        setItemsPerPage(1); 
+      } else if (window.innerWidth < 1024) {
+        setItemsPerPage(2); 
+      } else {
+        setItemsPerPage(3); 
+      }
+    };
+
+    updateItemsPerPage();
+    window.addEventListener('resize', updateItemsPerPage);
+
+    return () => window.removeEventListener('resize', updateItemsPerPage);
+  }, []);
+
   useEffect(() => {
     const iconInterval = setInterval(() => {
-      setCurrentIconIndex(prev => 
+      setCurrentIconIndex(prev =>
         prev >= shopByIconsData.length - itemsPerPage ? 0 : prev + 1
       );
     }, 5000);
 
-    return () => {
-      clearInterval(iconInterval);
-    };
-  }, [shopByIconsData.length]);
+    return () => clearInterval(iconInterval);
+  }, [itemsPerPage]);
 
   const goToPrevIcon = () => {
-    setCurrentIconIndex(prev => 
+    setCurrentIconIndex(prev =>
       prev === 0 ? shopByIconsData.length - itemsPerPage : prev - 1
     );
   };
 
   const goToNextIcon = () => {
-    setCurrentIconIndex(prev => 
+    setCurrentIconIndex(prev =>
       prev >= shopByIconsData.length - itemsPerPage ? 0 : prev + 1
     );
   };
 
-  // Calculate the visible items
   const visibleItems = shopByIconsData.slice(
-    currentIconIndex, 
+    currentIconIndex,
     currentIconIndex + itemsPerPage
   );
 
-  // If we're at the end and don't have enough items, wrap around
   if (visibleItems.length < itemsPerPage) {
     visibleItems.push(
       ...shopByIconsData.slice(0, itemsPerPage - visibleItems.length)
@@ -87,46 +99,47 @@ const ShopByIconsSlider = () => {
   }
 
   return (
-    <div className="w-full py-12 px-4 bg-gray-50">
-      {/* Shop by Icons Section */}
-      <div className="max-w-7xl mx-auto mb-14">
-        <h2 className="text-3xl font-bold text-center mb-8">Shop by Icons</h2>
-        
+    <div className="w-full py-10 px-4 sm:px-6 md:px-10 bg-gray-50">
+      <div className="max-w-7xl mx-auto mb-10">
+        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8">
+          Shop by Icons
+        </h2>
+
         <div className="relative">
           <div className="overflow-hidden">
-            <div className="flex justify-center gap-2">
+            <div className="flex justify-center gap-4">
               {visibleItems.map((item, index) => (
-                <div 
+                <div
                   key={`${currentIconIndex}-${index}`}
-                  className="w-1/3 max-w-xs flex-shrink-0"
+                  className="w-full sm:w-1/2 lg:w-1/3 max-w-xs flex-shrink-0"
                 >
-                  <a href="/ProductListpage" className="block">
-                    {/* <div className="bg-white rounded-lg p-6 h-96 flex flex-col items-center justify-center shadow-md hover:shadow-lg transition"> */}
-                      <img 
-                        src={item.image} 
-                        alt={item.title} 
-                        className="h-64 w-full object-contain mb-4"
-                      />
-                      
-                    {/* </div> */}
+                  <a href="/productListpage" className="block">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="h-64 w-full object-contain mb-2 sm:mb-4"
+                    />
+                    <p className="text-center font-medium text-sm sm:text-base">
+                      {item.title}
+                    </p>
                   </a>
                 </div>
               ))}
             </div>
           </div>
-          
+
           {shopByIconsData.length > itemsPerPage && (
             <>
-              <button 
+              <button
                 onClick={goToPrevIcon}
-                className="absolute left-0 top-1/2 -translate-y-1/2 bg-white p-3 rounded-full shadow-md hover:bg-gray-100 z-10"
+                className="absolute left-0 top-1/2 -translate-y-1/2 bg-white p-2 sm:p-3 rounded-full shadow-md hover:bg-gray-100 z-10"
                 aria-label="Previous"
               >
                 &lt;
               </button>
-              <button 
+              <button
                 onClick={goToNextIcon}
-                className="absolute right-0 top-1/2 -translate-y-1/2 bg-white p-3 rounded-full shadow-md hover:bg-gray-100 z-10"
+                className="absolute right-0 top-1/2 -translate-y-1/2 bg-white p-2 sm:p-3 rounded-full shadow-md hover:bg-gray-100 z-10"
                 aria-label="Next"
               >
                 &gt;
