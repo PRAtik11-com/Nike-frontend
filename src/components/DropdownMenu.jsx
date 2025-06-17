@@ -1,211 +1,85 @@
+import { Link } from "react-router-dom";
+
 const DropdownMenu = ({ section }) => {
+  const menuLink = "/productListpage";
+
+  const renderLink = (text) => (
+    <li>
+      <Link to={menuLink} className="hover:underline">
+        {text}
+      </Link>
+    </li>
+  );
+
   if (section === "New & Featured") {
     return (
       <div className="grid grid-cols-4 gap-8 w-full text-sm text-gray-800">
-        {/* Column 1 */}
         <div>
           <h3 className="font-bold mb-3">Featured</h3>
           <ul className="space-y-1">
-            <li>
-              <a href="/productListpage" className="hover:underline">
-                New & Upcoming Drops
-              </a>
-            </li>
-            <li>
-              <a href = "/productListpage" className="hover:underline">New Arrivals</a>
-            </li>
-            <li>
-              <a href = "/productListpage" className="hover:underline">Bestsellers</a>
-            </li>
-            <li>
-              <a href = "/productListpage" className="hover:underline">SNKRS Launch Calendar</a>
-            </li>
-            <li>
-              <a href = "/productListpage" className="hover:underline">Customise with Nike By You</a>
-            </li>
-            <li>
-              <a href = "/productListpage" className="hover:underline">Jordan</a>
-            </li>
+            {["New & Upcoming Drops", "New Arrivals", "Bestsellers", "SNKRS Launch Calendar", "Customise with Nike By You", "Jordan"].map(renderLink)}
           </ul>
         </div>
-
-        {/* Column 2 */}
         <div>
           <h3 className="font-bold mb-3">Trending</h3>
           <ul className="space-y-1">
-            <li>
-              <a href = "/productListpage" className="hover:underline">Summer Essentials</a>
-            </li>
-            <li>
-              <a href = "/productListpage" className="hover:underline">Air Max Dn8</a>
-            </li>
-            <li>
-              <a href = "/productListpage" className="hover:underline">What's Trending</a>
-            </li>
-            <li>
-              <a href = "/productListpage" className="hover:underline">Nike 24.7</a>
-            </li>
-            <li>
-              <a href = "/productListpage" className="hover:underline">Colours of the Season: Pastel</a>
-            </li>
-            <li>
-              <a href = "/productListpage" className="hover:underline">Retro Running</a>
-            </li>
-            <li>
-              <a href = "/productListpage" className="hover:underline">Running Shoe Finder</a>
-            </li>
+            {["Summer Essentials", "Air Max Dn8", "What's Trending", "Nike 24.7", "Colours of the Season: Pastel", "Retro Running", "Running Shoe Finder"].map(renderLink)}
           </ul>
         </div>
-
-        {/* Column 3 */}
         <div>
           <h3 className="font-bold mb-3">Shop Icons</h3>
           <ul className="space-y-1">
-            <li>
-              <a href = "/productListpage" className="hover:underline">Lifestyle</a>
-            </li>
-            <li>
-              <a href = "/productListpage" className="hover:underline">Air Force 1</a>
-            </li>
-            <li>
-              <a href = "/productListpage" className="hover:underline">Air Jordan 1</a>
-            </li>
-            <li>
-              <a href = "/productListpage" className="hover:underline">Air Max</a>
-            </li>
-            <li>
-              <a href = "/productListpage" className="hover:underline">Dunk</a>
-            </li>
-            <li>
-              <a href = "/productListpage" className="hover:underline">Cortez</a>
-            </li>
-            <li>
-              <a href = "/productListpage" className="hover:underline">Blazer</a>
-            </li>
-            <li>
-              <a href = "/productListpage" className="hover:underline">Pegasus</a>
-            </li>
-            <li>
-              <a href = "/productListpage" className="hover:underline">Vomero</a>
-            </li>
+            {["Lifestyle", "Air Force 1", "Air Jordan 1", "Air Max", "Dunk", "Cortez", "Blazer", "Pegasus", "Vomero"].map(renderLink)}
           </ul>
         </div>
-
-        {/* Column 4 */}
         <div>
           <h3 className="font-bold mb-3">Shop By Sport</h3>
           <ul className="space-y-1">
-            <li>
-              <a href = "/productListpage" className="hover:underline">Running</a>
-            </li>
-            <li>
-              <a href = "/productListpage" className="hover:underline">Basketball</a>
-            </li>
-            <li>
-              <a href = "/productListpage" className="hover:underline">Football</a>
-            </li>
-            <li>
-              <a href = "/productListpage" className="hover:underline">Golf</a>
-            </li>
-            <li>
-              <a href = "/productListpage" className="hover:underline">Tennis</a>
-            </li>
-            <li>
-              <a href = "/productListpage" className="hover:underline">Gym and Training</a>
-            </li>
-            <li>
-              <a href = "/productListpage" className="hover:underline">Yoga</a>
-            </li>
-            <li>
-              <a href = "/productListpage" className="hover:underline">Skateboarding</a>
-            </li>
+            {["Running", "Basketball", "Football", "Golf", "Tennis", "Gym and Training", "Yoga", "Skateboarding"].map(renderLink)}
           </ul>
         </div>
       </div>
     );
   }
-  //Men
-  if (section === "Men" || section === "Women" || section === "Kids" || section === "Sale" || section === "SNKRS")  {
+
+  if (["Men", "Women", "Kids", "Sale", "SNKRS"].includes(section)) {
     return (
       <div className="grid grid-cols-5 gap-8 w-full text-sm text-gray-800">
-        {/* Column 1 - Featured */}
         <div>
           <h3 className="font-bold mb-3">Featured</h3>
           <ul className="space-y-2">
-            <li><a href = "/productListpage" className="hover:underline">New Arrivals</a></li>
-            <li><a href = "/productListpage" className="hover:underline">Bestsellers</a></li>
-            <li><a href = "/productListpage" className="hover:underline">Shop All Sale</a></li>
+            {["New Arrivals", "Bestsellers", "Shop All Sale"].map(renderLink)}
           </ul>
         </div>
-
-        {/* Column 2 - Shoes */}
         <div>
           <h3 className="font-bold mb-3">Shoes</h3>
           <ul className="space-y-2">
-            <li><a href = "/productListpage" className="hover:underline">All Shoes</a></li>
-            <li><a href = "/productListpage" className="hover:underline">Lifestyle</a></li>
-            <li><a href = "/productListpage" className="hover:underline">Jordan</a></li>
-            <li><a href = "/productListpage" className="hover:underline">Running</a></li>
-            <li><a href = "/productListpage" className="hover:underline">Football</a></li>
-            <li><a href = "/productListpage" className="hover:underline">Basketball</a></li>
-            <li><a href = "/productListpage" className="hover:underline">Gym and Training</a></li>
-            <li><a href = "/productListpage" className="hover:underline">Skateboarding</a></li>
-            <li><a href = "/productListpage" className="hover:underline">Sandals and Slides</a></li>
-            <li><a href = "/productListpage" className="hover:underline">Nike By You</a></li>
+            {["All Shoes", "Lifestyle", "Jordan", "Running", "Football", "Basketball", "Gym and Training", "Skateboarding", "Sandals and Slides", "Nike By You"].map(renderLink)}
           </ul>
         </div>
-
-        {/* Column 3 - Clothing */}
         <div>
           <h3 className="font-bold mb-3">Clothing</h3>
           <ul className="space-y-2">
-            <li><a href = "/productListpage" className="hover:underline">All Clothing</a></li>
-            <li><a href = "/productListpage" className="hover:underline">Tops and T-Shirts</a></li>
-            <li><a href = "/productListpage" className="hover:underline">Shorts</a></li>
-            <li><a href = "/productListpage" className="hover:underline">Pants and Leggings</a></li>
-            <li><a href = "/productListpage" className="hover:underline">Hoodies and Sweatshirts</a></li>
-            <li><a href = "/productListpage" className="hover:underline">Jackets and Gilets</a></li>
-            <li><a href = "/productListpage" className="hover:underline">Jerseys and Kits</a></li>
-            <li><a href = "/productListpage" className="hover:underline">Jordan</a></li>
+            {["All Clothing", "Tops and T-Shirts", "Shorts", "Pants and Leggings", "Hoodies and Sweatshirts", "Jackets and Gilets", "Jerseys and Kits", "Jordan"].map(renderLink)}
           </ul>
         </div>
-
-        {/* Column 4 - Shop By Sport */}
         <div>
           <h3 className="font-bold mb-3">Shop By Sport</h3>
           <ul className="space-y-2">
-            <li><a href = "/productListpage" className="hover:underline">Running</a></li>
-            <li><a href = "/productListpage" className="hover:underline">Basketball</a></li>
-            <li><a href = "/productListpage" className="hover:underline">Football</a></li>
-            <li><a href = "/productListpage" className="hover:underline">Golf</a></li>
-            <li><a href = "/productListpage" className="hover:underline">Tennis</a></li>
-            <li><a href = "/productListpage" className="hover:underline">Gym and Training</a></li>
-            <li><a href = "/productListpage" className="hover:underline">Yoga</a></li>
-            <li><a href = "/productListpage" className="hover:underline">Skateboarding</a></li>
+            {["Running", "Basketball", "Football", "Golf", "Tennis", "Gym and Training", "Yoga", "Skateboarding"].map(renderLink)}
           </ul>
         </div>
-
-        {/* Column 5 - Accessories and Equipment */}
         <div>
           <h3 className="font-bold mb-3">Accessories & Equipment</h3>
           <ul className="space-y-2">
-            <li><a href = "/productListpage" className="hover:underline">All Accessories</a></li>
-            <li><a href = "/productListpage" className="hover:underline">Bags and Backpacks</a></li>
-            <li><a href = "/productListpage" className="hover:underline">Socks</a></li>
-            <li><a href = "/productListpage" className="hover:underline">Hats and Headwear</a></li>
+            {["All Accessories", "Bags and Backpacks", "Socks", "Hats and Headwear"].map(renderLink)}
           </ul>
         </div>
       </div>
     );
   }
-   
-  
 
   return null;
 };
 
 export default DropdownMenu;
-
-
-
-

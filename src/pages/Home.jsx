@@ -11,12 +11,12 @@ const Home = () => {
         <h2 className="text-sm md:text-base font-medium text-gray-800">
           New Styles On Sale: Up To 40% Off
         </h2>
-        <a
-          href="#"
+        <Link
+          to="/productlistpage"
           className="text-blue-600 font-semibold text-sm hover:underline"
         >
           Shop All Our New Markdowns
-        </a>
+        </Link>
       </div>
 
       {/* Hero Banner */}
@@ -47,9 +47,12 @@ const Home = () => {
         <p className="text-gray-600 text-base mt-4">
           Celebrate the win in style.
         </p>
-        <button className="mt-6 px-6 py-2 rounded-full bg-black text-white font-semibold hover:bg-gray-900 transition">
+        <Link
+          to="/productlistpage"
+          className="mt-6 inline-block px-6 py-2 rounded-full bg-black text-white font-semibold hover:bg-gray-900 transition"
+        >
           Shop
-        </button>
+        </Link>
       </div>
 
       {/* 3-Image Grid Section */}
@@ -58,7 +61,7 @@ const Home = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Card 1 */}
           <div className="text-center">
-            <a href="/productListpage" className="block relative">
+            <Link to="/productListpage" className="block relative">
               <img
                 data-qa="image-media-img"
                 alt="Nike. Just Do It"
@@ -70,12 +73,12 @@ const Home = () => {
               <p className="mt-4 text-base font-medium text-gray-800">
                 Your One And Only Layer
               </p>
-            </a>
+            </Link>
           </div>
 
           {/* Card 2 */}
           <div className="text-center">
-            <a href="/productListpage" className="block relative">
+            <Link to="/productListpage" className="block relative">
               <img
                 data-qa="image-media-img"
                 alt="Nike. Just Do It"
@@ -87,12 +90,12 @@ const Home = () => {
               <p className="mt-4 text-base font-medium text-gray-800">
                 Nike Killshot
               </p>
-            </a>
+            </Link>
           </div>
 
           {/* Card 3 */}
           <div className="text-center">
-            <a href="/productListpage" className="block relative">
+            <Link to="/productListpage" className="block relative">
               <img
                 data-qa="image-media-img"
                 alt="Nike. Just Do It"
@@ -104,7 +107,7 @@ const Home = () => {
               <p className="mt-4 text-base font-medium text-gray-800">
                 Nike Sonic Fly
               </p>
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -113,14 +116,14 @@ const Home = () => {
       <div className="max-w-7xl mx-auto px-2 py-10">
         <h1 className="text-4xl font-bold text-gray-900 mb-8">Trending</h1>
         <div className="text-center">
-          <a href="/productListpage" className="block relative">
+          <Link to="/productListpage" className="block relative">
             <img
               data-qa="image-media-img"
               alt="Nike. Just Do It"
               src="https://static.nike.com/a/images/f_auto/dpr_1.3,cs_srgb/h_1721,c_limit/56fe1abe-b1e9-4936-b5de-f9906fb609c5/nike-just-do-it.jpg"
               className="w-full h-[480px] "
             />
-          </a>
+          </Link>
         </div>
         {/*  Elevate Your Look Section */}
         <div className="text-center py-12 px-4">
