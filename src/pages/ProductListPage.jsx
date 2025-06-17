@@ -74,13 +74,15 @@ const ProductListPage = () => {
         Object.entries(filters).forEach(([key, value]) => {
           if (value) params.append(key.toLowerCase(), value);
         });
-
-        const url = `${import.meta.env.VITE_BaseUrl}/product/getallproducts?${params}`;
-       
-        const res = await axios.get(url, { withCredentials: true });
+    
+        const res = await axios.get(`${import.meta.env.VITE_BaseUrl}/product/getallproducts?${params}`, { 
+          withCredentials: true 
+        });
+        
         setProducts(res.data.posts || []);
       } catch (err) {
         console.error("Failed to fetch products", err);
+        console.log(err.response?.data)
       } finally {
         setLoading(false);
       }
