@@ -2,6 +2,7 @@
 import React from "react";
 import ShopByIconsSlider from "./ShopByIconsSlider";
 import TrendingNowSlider from "./TrendingNowSlider";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
